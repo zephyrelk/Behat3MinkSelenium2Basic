@@ -1,0 +1,4 @@
+#Setup
+selenium-server-standalone-3.13.0.jar downloaded to Dev directory
+chromedriver downloaded to Dev directory
+java -jar Dev/selenium-server-standalone-*.jarrun prior to running behat tests

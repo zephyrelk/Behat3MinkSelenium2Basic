@@ -1,0 +1,7 @@
+default:
+    extensions:
+        Behat\MinkExtension:
+            base_url: https://www.soundtransit.org
+            browser_name: 'chrome'
+            goutte: ~
+            selenium2: ~

@@ -1,0 +1,88 @@
+eelke@elktermL:~/Dev/behatEx/btest6$ bin/behat features
+Feature: Disambiguation
+  Disambiguate from and too options
+  As a website trip planner
+  I need to be able see possible alternates for entries
+
+  @mink:selenium2
+  Scenario: Can get disambiguation for START when user enters ambiguous START point, Headed test # features/disambiguate.feature:7
+    Given I am on "Trip-Planner"                                                                 # FeatureContext::visit()
+    And I fill in "from" with "Everett CC"                                                       # FeatureContext::fillField()
+    And I fill in "to" with "Seattle"                                                            # FeatureContext::fillField()
+    And I press "trip-submit"                                                                    # FeatureContext::pressButton()
+    And I wait 2 seconds                                                                         # FeatureContext::iWaitSeconds()
+    Then I should be on "https://www.soundtransit.org/Trip-Planner"                              # FeatureContext::assertPageAddress()
+    And I should see "Plan your trip!"                                                           # FeatureContext::assertPageContainsText()
+    And I should see an "#disambiguate-results" element                                          # FeatureContext::assertElementOnPage()
+    And I should see "We found several starting points for your search"                          # FeatureContext::assertPageContainsText()
+    And I should see "Did you mean?"                                                             # FeatureContext::assertPageContainsText()
+
+  @mink:selenium2
+  Scenario: Can get disambiguation for END when user enters ambiguous END point, Headed test # features/disambiguate.feature:20
+    Given I am on "Trip-Planner"                                                             # FeatureContext::visit()
+    And I fill in "from" with "Everett CC"                                                   # FeatureContext::fillField()
+    And I fill in "to" with "Seattle"                                                        # FeatureContext::fillField()
+    And I press "trip-submit"                                                                # FeatureContext::pressButton()
+    And I wait 2 seconds                                                                     # FeatureContext::iWaitSeconds()
+    And I click on an ".possible-1" element                                                  # FeatureContext::iClickOnAnElement()
+    And I wait 2 seconds                                                                     # FeatureContext::iWaitSeconds()
+    Then I should see "We found several ending points for your search"                       # FeatureContext::assertPageContainsText()
+    And I should see "Did you mean?"                                                         # FeatureContext::assertPageContainsText()
+
+  @mink:selenium2
+  Scenario: Can disambiguate START and END and get trip options, Headed test # features/disambiguate.feature:32
+    Given I am on "Trip-Planner"                                             # FeatureContext::visit()
+    And I fill in "from" with "Everett CC"                                   # FeatureContext::fillField()
+    And I fill in "to" with "Seattle"                                        # FeatureContext::fillField()
+    And I press "trip-submit"                                                # FeatureContext::pressButton()
+    And I wait 2 seconds                                                     # FeatureContext::iWaitSeconds()
+    And I click on an ".possible-1" element                                  # FeatureContext::iClickOnAnElement()
+    And I wait 2 seconds                                                     # FeatureContext::iWaitSeconds()
+    And I click on an ".possible-1" element                                  # FeatureContext::iClickOnAnElement()
+    And I wait 2 seconds                                                     # FeatureContext::iWaitSeconds()
+    Then I should see an "#trip-data" element                                # FeatureContext::assertElementOnPage()
+    And I should see "Trip Options"                                          # FeatureContext::assertPageContainsText()
+
+Feature: Trip Planner Basic Use
+  Get from point-A to Point-B
+  As a website trip planner
+  I need to be able see options from point-A to point-B
+
+  Scenario: Homepage has basic elements on headless test # features/plantrip.feature:6
+    Given I am on the homepage                           # FeatureContext::iAmOnHomepage()
+    Then I should see "Plan your trip!"                  # FeatureContext::assertPageContainsText()
+    And I should see "Find Your Schedule"                # FeatureContext::assertPageContainsText()
+    And I should see "Alerts"                            # FeatureContext::assertPageContainsText()
+    And I should see "Donuts"                            # FeatureContext::assertPageContainsText()
+      The text "Donuts" was not found anywhere in the text of the current page. (Behat\Mink\Exception\ResponseTextException)
+
+  @mink:selenium2
+  Scenario: Can enter Trip info on homepage real browser            # features/plantrip.feature:14
+    Given I am on the homepage                                      # FeatureContext::iAmOnHomepage()
+    When I fill in "from" with "Everett CC"                         # FeatureContext::fillField()
+    And I fill in "to" with "Seattle"                               # FeatureContext::fillField()
+    And I press "trip-submit"                                       # FeatureContext::pressButton()
+    Then I should be on "https://www.soundtransit.org/Trip-Planner" # FeatureContext::assertPageAddress()
+    And I should see "Trip Planner"                                 # FeatureContext::assertPageContainsText()
+    And I should see an "#planner-form-container" element           # FeatureContext::assertElementOnPage()
+    And I should see an "#trip-data" element                        # FeatureContext::assertElementOnPage()
+
+  @mink:selenium2
+  Scenario: Can enter explicit trip info on Trip Planner page and get routes, real browser # features/plantrip.feature:25
+    Given I am on "Trip-Planner"                                                           # FeatureContext::visit()
+    And I fill in "from" with "everett"                                                    # FeatureContext::fillField()
+    And I fill in "to" with "Seatac Int'l-Terminal Arrivals, WA"                           # FeatureContext::fillField()
+    And I press "trip-submit"                                                              # FeatureContext::pressButton()
+    And I wait 2 seconds                                                                   # FeatureContext::iWaitSeconds()
+    Then I should be on "https://www.soundtransit.org/Trip-Planner"                        # FeatureContext::assertPageAddress()
+    And I should see an "#trip-data" element                                               # FeatureContext::assertElementOnPage()
+    And I should see "Trip Options"                                                        # FeatureContext::assertPageContainsText()
+
+--- Failed scenarios:
+
+    features/plantrip.feature:6
+
+6 scenarios (5 passed, 1 failed)
+51 steps (50 passed, 1 failed)
+1m1.20s (11.03Mb)
+eelke@elktermL:~/Dev/behatEx/btest6$
