@@ -2,11 +2,11 @@
 ---
 Behat 3, Mink, Selenium2, Browser Control on actual Chrome Browser on a single local machine.
 This is basic example, working as of 7/1/2018.
-**(Note that as time goes on the versions of components that work together changes, this is an issue I had with almost all examples I tried, as such, this project has all the files pull by composer)**
+**(Note that as time goes on the versions of components that work together changes, this is an issue I had with almost all examples I tried, as such, this project has all the files pulled by composer for now.  All that is needed though, in theory, are the following [features dirctory, behat.yml, composer.json, and composer.phar if you don't have it])**
 
 This project was about going from zero knowledge about Behat and Mink combined with Selenium on a Linux system, to a basic,  functioning test automation setup that launches a browser and runs some basic tests within that browser.
 
-__Steps Achieved:__
+## Steps Achieved:
 1. Determine a combination of Behat, Mink and Selenium2 that would run together.
 2. Do basic, non-browser test on 'ls' command to establish basic functionality.
 3. Do headless browser test on Wikipedia search to establish basic website test.
@@ -19,7 +19,8 @@ __Steps Achieved:__
 6. Build tests that can interact and verify results in lower part of page that cannot be accessed in headless test.
 
 ## Setup/components/versions
-1. Behat 3 (see composer.json for more version information)
+1. Behat 3, Mink, Selenium2 (see composer.json for more version information. To install from this file run
+    > *php composer.phar install*
 2. java 1.8
 3. php 7
 4. selenium-server-standalone-3.13.0.jar placed in directory "X"
@@ -30,11 +31,13 @@ __Steps Achieved:__
 * This is a single machine setup.  
 * run selenium server similar to below, prior to running behat tests
   - java -jar (Path to dirctory "X")/selenium-server-standalone-*.jar
-* __Donut__ "test" is an intentional failure case in order to see the system is working as expected.
+* __Donuts__ "test" is an intentional failure case in order to see the system is working as expected.
+* see *exampleResults.txt* to see how this was run and what output looked like.
 
 
 
-**Other objectives not addressed yet**
+
+**Other objectives of interest not addressed yet**
 1. be able to run test on Firefox and IE as well.
 2. add/update code to spin on elements not seen yet, such that test proceeds as soon as possible
 3. running multiple browsers in parallel

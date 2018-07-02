@@ -1,5 +1,5 @@
 Feature: Disambiguation
-  Disambiguate from and too options
+  Disambiguate Start and End options
   As a website trip planner
   I need to be able see possible alternates for entries
 
@@ -9,7 +9,7 @@ Feature: Disambiguation
       And I fill in "from" with "Everett CC"
       And I fill in "to" with "Seattle"
       And I press "trip-submit"
-      And I wait 2 seconds
+      And I wait 3 seconds
       Then I should be on "https://www.soundtransit.org/Trip-Planner"
       And I should see "Plan your trip!"
       And I should see an "#disambiguate-results" element

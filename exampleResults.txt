@@ -1,6 +1,6 @@
-eelke@elktermL:~/Dev/behatEx/btest6$ bin/behat features
+eelke@elktermL:~/Dev/behatEx/Behat3MinkSelenium2Basic$ bin/behat features
 Feature: Disambiguation
-  Disambiguate from and too options
+  Disambiguate Start and End options
   As a website trip planner
   I need to be able see possible alternates for entries
 
@@ -10,7 +10,7 @@ Feature: Disambiguation
     And I fill in "from" with "Everett CC"                                                       # FeatureContext::fillField()
     And I fill in "to" with "Seattle"                                                            # FeatureContext::fillField()
     And I press "trip-submit"                                                                    # FeatureContext::pressButton()
-    And I wait 2 seconds                                                                         # FeatureContext::iWaitSeconds()
+    And I wait 3 seconds                                                                         # FeatureContext::iWaitSeconds()
     Then I should be on "https://www.soundtransit.org/Trip-Planner"                              # FeatureContext::assertPageAddress()
     And I should see "Plan your trip!"                                                           # FeatureContext::assertPageContainsText()
     And I should see an "#disambiguate-results" element                                          # FeatureContext::assertElementOnPage()
@@ -84,5 +84,5 @@ Feature: Trip Planner Basic Use
 
 6 scenarios (5 passed, 1 failed)
 51 steps (50 passed, 1 failed)
-1m1.20s (11.03Mb)
-eelke@elktermL:~/Dev/behatEx/btest6$
+0m59.78s (11.06Mb)
+eelke@elktermL:~/Dev/behatEx/Behat3MinkSelenium2Basic$
