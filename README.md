@@ -19,7 +19,7 @@ This project was about going from zero knowledge about Behat and Mink combined w
 6. Build tests that can interact and verify results in lower part of page that cannot be accessed in headless test.
 
 ## Setup/components/versions
-1. Behat 3, Mink, Selenium2 (see composer.json for more version information. To install from this file run
+1. Behat 3, Mink, Selenium2 (see composer.json for more version information. To install from this file run the following)
     > *php composer.phar install*
 2. java 1.8
 3. php 7
@@ -30,7 +30,7 @@ This project was about going from zero knowledge about Behat and Mink combined w
 ## Run notes
 * This is a single machine setup.  
 * run selenium server similar to below, prior to running behat tests
-  - java -jar (Path to dirctory "X")/selenium-server-standalone-*.jar
+  > java -jar (Path to dirctory "X")/selenium-server-standalone-*.jar
 * __Donuts__ "test" is an intentional failure case in order to see the system is working as expected.
 * see *exampleResults.txt* to see how this was run and what output looked like.
 
