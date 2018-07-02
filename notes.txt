@@ -1,8 +1,0 @@
-#Setup
-java installed
-php installed
-selenium-server-standalone-3.13.0.jar downloaded to directory "X"
-chromedriver downloaded to directory "X"
-
-download and run similar to following prior to running behat tests
-java -jar (Path to dirctory "X")/selenium-server-standalone-*.jar
